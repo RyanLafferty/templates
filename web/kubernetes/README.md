@@ -66,6 +66,18 @@ make build
 
 ## Kubernetes
 
+### Start Local Minikube Cluster
+
+```Bash
+make start-minikube
+```
+
+### Use Minikube Docker Daemon
+
+```Bash
+eval $(minikube docker-env)
+```
+
 ### Creating The Cluster
 
 ```Bash
@@ -83,6 +95,18 @@ make cluster-url
 
 ```Bash
 make destroy-cluster
+```
+
+### Stop Local Minikube Cluster
+
+```Bash
+make stop-minikube
+```
+
+### Use Host Docker Daemon
+
+```Bash
+eval $(docker-machine env -u)
 ```
 
 ### Commands
