@@ -78,6 +78,12 @@ make start-minikube
 eval $(minikube docker-env)
 ```
 
+### Building The Images
+
+```Bash
+make build
+```
+
 ### Creating The Cluster
 
 ```Bash
