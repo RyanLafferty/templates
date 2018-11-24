@@ -11,11 +11,10 @@ WORKDIR /app
 # Install app deps
 COPY ./app/package.json ./
 RUN npm install
-RUN npm install nodemon -g
 
 # Copy app
 COPY ./app/app.js .
 
 # Start app
 EXPOSE 8080
-CMD ["nodemon", "start"]
+CMD ["npm", "start"]
