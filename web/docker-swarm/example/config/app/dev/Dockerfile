@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 LABEL maintainer="RyanLafferty"
 
 RUN apt-get update && apt-get install -y gnupg curl
