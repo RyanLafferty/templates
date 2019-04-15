@@ -1,0 +1,40 @@
+kind: Service
+apiVersion: v1
+spec:
+  selector:
+    app: container-name
+  ports:
+  - protocol: TCP
+    port: HOST_PORT
+    targetPort: CONTAINER_PORT
+  type: LoadBalancer
+metadata:
+  name: load-balancer-name
+  namespace: default
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: deployment-name
+  namespace: default
+  labels:
+    app: container-name
+spec:
+  replicas: REPLICA_COUNT
+  selector:
+    matchLabels:
+      app: container-name
+  template:
+    metadata:
+      namespace: default
+      labels:
+        app: container-name
+    spec:
+      containers:
+      - name: container-name
+        image: image-repository
+        ports:
+        - name: port-name
+          containerPort: CONTAINER_PORT
+      imagePullSecrets:
+        - name: image-repository-secret

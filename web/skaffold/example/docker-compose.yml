@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  db:
+    image: localhost:5000/express-db:1.0.0
+    container_name: express-db
+    build: 
+      context: .
+      dockerfile: ./config/db/dev/Dockerfile
+    ports:
+      - "3306:3306"
+    environment:
+      DATABASE_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: inventory
+  app:
+    image: localhost:5000/express-app:1.0.0
+    container_name: express-app
+    build:
+      context: .
+      dockerfile: config/app/dev/Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - config/env/dev.env
+    depends_on:
+      - db
+    links:
+      - db
+    stdin_open: true
+    tty: true
+    restart: always
