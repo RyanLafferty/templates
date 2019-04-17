@@ -14,17 +14,6 @@ make install
 2. Docker, docker-compose, docker-machine
 3. skaffold, kubernetes, minikube
 
-## TODO - Cleaning Up Docker
-```Bash
-make docker-clean
-```
-
-## TODO - Destroying The Docker Environment
-```Bash
-make docker-destroy
-```
-
-
 ## Skaffold
 
 ### Start Local Minikube Cluster
