@@ -12,7 +12,7 @@ make install
 ### Technologies
 1. Make, sh
 2. Docker, docker-compose, docker-machine
-3. mysql, kubernetes, minikube, skaffold
+3. skaffold, kubernetes, minikube
 
 ## TODO - Cleaning Up Docker
 ```Bash
