@@ -27,41 +27,24 @@ KUBECTL_COMMAND := kubectl
 SKAFFOLD_COMMAND := skaffold
 
 # Kubernetes Config
-APP_CLUSTER_CONFIG := app.yml
 KUBERNETES_SERVICE := express-app-service
 
 # Docker Commands
 DOCKER_COMMAND := docker
-DOCKER_SWARM_COMMAND := docker swarm
 DOCKER_COMPOSE_COMMAND := docker-compose
 
-# Docker Config
-COMPOSE_FILE := example/docker-compose.yml
-LOCAL_IMAGE_NAME := app
+# Container Reg Config
 REG_PUBLISHED_PORT := 5000
 REG_SERVICE_PORT := 5000
 
-# Containers
-LOCAL_CONTAINER_NAME := app
-LOCAL_DB_CONTAINER_NAME := db
-
-# Test DB Auth - DO NOT USE REAL AUTH
-LOCAL_DB_USER := root
-LOCAL_DB_PASS := root
-LOCAL_DB_NAME := default
-
 
 # Environment
-.PHONY: install hooks docker-clean docker-destroy
+.PHONY: install hooks
 
 install:
 	$(INSTALL_COMMAND)
 hooks:
 	cp hooks/* .git/hooks/
-docker-clean:
-	sh scripts/docker-cleanup.sh
-docker-destroy:
-	sh scripts/docker-destroy.sh
 
 # Kubernetes
 .PHONY: create-container-registry destroy-container-registry
