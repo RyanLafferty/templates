@@ -1,0 +1,37 @@
+{
+  "name": "react-component-library",
+  "version": "0.1.0",
+  "description": "",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<USER_OR_ORG>/<PROJECT>"
+  },
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack",
+    "storybook": "start-storybook -s ./public -p 9009",
+    "build-storybook": "build-storybook -c .storybook -s ./public -o docs"
+  },
+  "author": {
+    "name": "USER OR ORG"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.6"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.0",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@storybook/react": "^5.0.6",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.2.0",
+    "webpack-cli": "^3.3.0"
+  }
+}

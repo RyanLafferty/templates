@@ -1,0 +1,8 @@
+# builds
+build
+
+# analytic reports
+analytics
+
+# node modules
+node_modules
