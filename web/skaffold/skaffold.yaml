@@ -2,8 +2,8 @@ apiVersion: skaffold/v1beta8
 kind: Config
 build:
   artifacts:
-    - image: 'localhost:5000/express-app:1.0.0'
-      context: web/docker-swarm/example
+    - image: 'express-app'
+      context: example
       docker:
         dockerfile: config/app/dev/Dockerfile
   tagPolicy:
@@ -14,4 +14,4 @@ build:
 deploy:
   kubectl:
     manifests:
-      - web/kubernetes/example/app.yml
+      - example/app.yml
