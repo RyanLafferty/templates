@@ -63,32 +63,6 @@ docker-clean:
 docker-destroy:
 	sh scripts/docker-destroy.sh
 
-# Application
-.PHONY: up start stop ssh build reup
-
-up:
-	$(UP_COMMAND)
-	$(DOCKER_COMPOSE_COMMAND) up
-start:
-	$(DOCKER_COMPOSE_COMMAND) start
-stop:
-	$(DOCKER_COMPOSE_COMMAND) stop
-ssh:
-	$(DOCKER_COMMAND) exec -it $(LOCAL_CONTAINER_NAME) /bin/bash
-build:
-	$(DOCKER_COMPOSE_COMMAND) build
-reup: build up
-
-# Database
-.PHONY: backup-db restore-db destroy-db
-
-backup-db:
-	sh scripts/db-backup.sh $(LOCAL_DB_CONTAINER_NAME) $(LOCAL_DB_USER) $(LOCAL_DB_PASS) $(LOCAL_DB_NAME)
-restore-db:
-	sh scripts/db-restore.sh $(LOCAL_DB_CONTAINER_NAME) $(LOCAL_DB_USER) $(LOCAL_DB_PASS) $(LOCAL_DB_NAME)
-destroy-db:
-	sh scripts/db-destroy.sh $(LOCAL_DB_CONTAINER_NAME) $(LOCAL_DB_USER) $(LOCAL_DB_PASS) $(LOCAL_DB_NAME)
-
 # Kubernetes
 .PHONY: create-container-registry destroy-container-registry
 .PHONY: start-minikube stop-minikube

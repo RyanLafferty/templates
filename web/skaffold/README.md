@@ -1,4 +1,4 @@
-# kubernetes
+# skaffold
 
 ## Installation
 
@@ -12,7 +12,7 @@ make install
 ### Technologies
 1. Make, sh
 2. Docker, docker-compose, docker-machine
-3. mysql, kubernetes, minikube
+3. mysql, kubernetes, minikube, skaffold
 
 ## TODO - Cleaning Up Docker
 ```Bash
@@ -24,47 +24,8 @@ make docker-clean
 make docker-destroy
 ```
 
-## Application
 
-### Starting The Server
-
-```Bash
-make up
-```
-
-### Rebuilding The Docker Container
-
-```Bash
-make build && make up
-
-OR
-
-make reup
-```
-
-### Application Commands
-
-```Bash
-# Builds, (re)creates, starts, and attaches to containers for the app container.
-make up
-
-# Starts an already built app container
-make start
-
-# Stops the app container
-make stop
-
-# SSH into the local app container
-make ssh
-
-# Builds the app container
-make build
-```
-
-## Database - TODO
-
-
-## Kubernetes
+## Skaffold
 
 ### Start Local Minikube Cluster
 
