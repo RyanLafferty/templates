@@ -39,16 +39,16 @@ make start-minikube
 eval $(minikube docker-env)
 ```
 
-### Building The Images
+### Building The Cluster
 
 ```Bash
-make build
+make skaffold-build
 ```
 
-### Creating The Cluster
+### Deploying The Cluster
 
 ```Bash
-make create-cluster
+make skaffold-deploy
 ```
 
 ### Accessing The Cluster
@@ -61,7 +61,7 @@ make cluster-url
 ### Destroying The Cluster
 
 ```Bash
-make destroy-cluster
+make skaffold-destroy
 ```
 
 ### Stop Local Minikube Cluster
@@ -99,11 +99,17 @@ make configure-environment
 # Destroys the environment
 make destroy-environment
 
-# Creates the local kubernetes cluster
-make create-cluster
+# builds the local kubernetes cluster
+make skaffold-build
 
-# Destroys the local kubernetes cluster
-make destroy-cluster
+# deploys the local kubernetes cluster
+make skaffold-deploy
+
+# redeploys the local kubernetes cluster
+make skaffold-redeploy
+
+# destroys the local kubernetes cluster
+make skaffold-destroy
 
 # Inspects the local kubernetes cluster
 make inspect-cluster

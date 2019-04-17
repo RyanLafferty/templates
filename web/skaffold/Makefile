@@ -24,11 +24,11 @@ endif
 # Kubernetes Commands
 MINICUBE_COMMAND := minikube
 KUBECTL_COMMAND := kubectl
+SKAFFOLD_COMMAND := skaffold
 
 # Kubernetes Config
 APP_CLUSTER_CONFIG := app.yml
-KUBERNETES_SERVICE := app-service
-KUBERNETES_DEPLOYMENT := app-deployment
+KUBERNETES_SERVICE := express-app-service
 
 # Docker Commands
 DOCKER_COMMAND := docker
@@ -36,7 +36,7 @@ DOCKER_SWARM_COMMAND := docker swarm
 DOCKER_COMPOSE_COMMAND := docker-compose
 
 # Docker Config
-COMPOSE_FILE := docker-compose.yml
+COMPOSE_FILE := example/docker-compose.yml
 LOCAL_IMAGE_NAME := app
 REG_PUBLISHED_PORT := 5000
 REG_SERVICE_PORT := 5000
@@ -67,7 +67,7 @@ docker-destroy:
 .PHONY: create-container-registry destroy-container-registry
 .PHONY: start-minikube stop-minikube
 .PHONY: configure-environment destroy-environment
-.PHONY: create-cluster destroy-cluster inspect-cluster start-dashboard cluster-url
+.PHONY: inspect-cluster start-dashboard cluster-url
 
 create-container-registry:
 	$(DOCKER_COMMAND) service create --name registry --publish published=$(REG_PUBLISHED_PORT),target=$(REG_SERVICE_PORT) registry:2
@@ -84,11 +84,6 @@ stop-minikube:
 configure-environment: start-minikube create-container-registry
 destroy-environment: destroy-container-registry stop-minikube
 
-create-cluster:
-	$(KUBECTL_COMMAND) create -f $(APP_CLUSTER_CONFIG)
-destroy-cluster:
-	$(KUBECTL_COMMAND) delete DEPLOYMENT $(KUBERNETES_DEPLOYMENT)
-	$(KUBECTL_COMMAND) delete service $(KUBERNETES_SERVICE)
 inspect-cluster:
 	$(KUBECTL_COMMAND) get all
 start-dashboard:
@@ -96,3 +91,13 @@ start-dashboard:
 cluster-url:
 	$(MINICUBE_COMMAND) service $(KUBERNETES_SERVICE) --url
 
+# Skaffold
+.PHONY: skaffold-build skaffold-deploy skaffold-destroy skaffold-redeploy
+
+skaffold-build:
+	$(SKAFFOLD_COMMAND) build
+skaffold-deploy:
+	$(SKAFFOLD_COMMAND) deploy
+skaffold-destroy:
+	$(SKAFFOLD_COMMAND) destroy
+skaffold-redeploy: skaffold-build skaffold-deploy
