@@ -21,9 +21,16 @@ else
     endif
 endif
 
+# Docker Commands
+DOCKER_COMMAND := docker
+
 # Kubernetes Commands
 MINICUBE_COMMAND := minikube
 KUBECTL_COMMAND := kubectl
+
+# Docker Config
+REG_PUBLISHED_PORT := 5000
+REG_SERVICE_PORT := 5000
 
 # Environment
 .PHONY: install hooks
@@ -39,7 +46,7 @@ hooks:
 .PHONY: inspect-cluster start-dashboard cluster-url
 
 start-minikube:
-	sh scripts/minikube.sh
+	sh scripts/start-minikube.sh
 delete-minikube:
 	minikube delete
 stop-minikube:
@@ -61,12 +68,21 @@ cluster-url:
 .PHONY: install-knative monitor-knative
 
 install-knative:
-	sh scripts/install-knative
+	sh scripts/install-knative.sh
 monitor-knative:
 	kubectl get pods --namespace knative-serving
+
+# Local Container Registry
+.PHONY: create-container-registry destroy-container-registry
+
+create-container-registry:
+	$(DOCKER_COMMAND) run -d -p $(REG_PUBLISHED_PORT):$(REG_SERVICE_PORT) --restart=always --name registry registry:2
+destroy-container-registry:
+	$(DOCKER_COMMAND) stop registry
+	$(DOCKER_COMMAND) rm registry
 
 # TODO
 .PHONY: configure-environment destroy-environment
 
-configure-environment: start-minikube install-istio install-knative
-destroy-environment: delete-minikube stop-minikube
+configure-environment: start-minikube install-istio install-knative create-container-registry
+destroy-environment: delete-minikube stop-minikube destroy-container-registry
