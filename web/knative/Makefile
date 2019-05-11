@@ -66,11 +66,23 @@ cluster-url:
 
 # Knative
 .PHONY: install-knative monitor-knative
+.PHONY: monitor-knative-serving monitor-knative-build monitor-knative-eventing
+.PHONY: monitor-knative-pods monitor-knative-services
 
 install-knative:
 	sh scripts/install-knative.sh
 monitor-knative:
-	kubectl get pods --namespace knative-serving
+	kubectl get configuration,revision,route
+monitor-knative-serving:
+	kubectl get pods --namespace knative-serving --watch
+monitor-knative-build:
+	kubectl get pods --namespace knative-build --watch
+monitor-knative-eventing:
+	kubectl get pods --namespace knative-eventing --watch
+monitor-knative-pods:
+	kubectl get pods -watch
+monitor-knative-services:
+	kubectl get ksvc --watch
 
 # Local Container Registry
 .PHONY: create-container-registry destroy-container-registry
