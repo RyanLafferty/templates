@@ -68,6 +68,7 @@ cluster-url:
 .PHONY: install-knative monitor-knative
 .PHONY: monitor-knative-serving monitor-knative-build monitor-knative-eventing
 .PHONY: monitor-knative-pods monitor-knative-services
+.PHONY: monitor-local-gateways inspect-local-gateway set-local-gateways
 
 install-knative:
 	sh scripts/install-knative.sh
@@ -83,6 +84,12 @@ monitor-knative-pods:
 	kubectl get pods -watch
 monitor-knative-services:
 	kubectl get ksvc --watch
+monitor-local-gateways:
+	kubectl get gateway --all-namespaces --watch
+inspect-local-gateway:
+	sh scripts/inspect-local-gateway.sh
+get-local-gateways:
+	sh scripts/set-local-gateways.sh
 
 # Local Container Registry
 .PHONY: create-container-registry destroy-container-registry
