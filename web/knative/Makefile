@@ -47,7 +47,6 @@ hooks:
 
 start-minikube:
 	sh scripts/start-minikube.sh
-# TODO: echo eval command to use default docker daemon
 delete-minikube:
 	minikube delete
 stop-minikube:
