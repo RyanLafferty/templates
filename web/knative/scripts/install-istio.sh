@@ -1,5 +1,6 @@
 #/bin/bash
-# Source: https://knative.dev/docs/install/knative-with-minikube/
+#Sources:
+#    https://knative.dev/docs/install/knative-with-minikube/
 
 kubectl apply --filename https://github.com/knative/serving/releases/download/v0.5.0/istio-crds.yaml &&
 curl -L https://github.com/knative/serving/releases/download/v0.5.0/istio.yaml \
