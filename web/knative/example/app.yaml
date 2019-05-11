@@ -1,15 +1,14 @@
 apiVersion: serving.knative.dev/v1alpha1
 kind: Service
 metadata:
-  name: helloworld-python
-  namespace: default
+  name: app
 spec:
   runLatest:
     configuration:
       revisionTemplate:
         spec:
           container:
-            image: localhost:5000/helloworld-python
+            image: "gcr.io/knative-samples/helloworld-python"
             env:
-              - name: TARGET
-                value: "Python Sample v1"
+              - name: "TARGET"
+                value: "world"
