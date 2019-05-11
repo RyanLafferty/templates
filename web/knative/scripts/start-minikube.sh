@@ -7,3 +7,6 @@ minikube start --memory=8192 --cpus=4 \
 #  --vm-driver=kvm2 \ # omitting driver
   --disk-size=30g \
   --extra-config=apiserver.enable-admission-plugins="LimitRanger,NamespaceExists,NamespaceLifecycle,ResourceQuota,ServiceAccount,DefaultStorageClass,MutatingAdmissionWebhook"
+
+# TODO: test
+echo 'Use eval $(docker-machine env -u) to use host docker daemon'
