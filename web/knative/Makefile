@@ -91,7 +91,7 @@ inspect-local-gateway:
 get-local-gateways:
 	sh scripts/set-local-gateways.sh
 
-# Local Container Registry
+# Local Container Registry - TODO - figure out how to connect registry to minikube vm
 .PHONY: create-container-registry destroy-container-registry
 
 create-container-registry:
