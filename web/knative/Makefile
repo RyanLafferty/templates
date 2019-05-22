@@ -41,16 +41,16 @@ hooks:
 	cp hooks/* .git/hooks/
 
 # Kubernetes
-.PHONY: start-minikube delete-minikube stop-minikube
+.PHONY: start-minikube stop-minikube delete-minikube
 .PHONY: install-istio monitor-istio
 .PHONY: inspect-cluster start-dashboard cluster-url
 
 start-minikube:
 	sh scripts/start-minikube.sh
-delete-minikube:
-	minikube delete
 stop-minikube:
 	$(MINICUBE_COMMAND) stop
+delete-minikube:
+	$(MINICUBE_COMMAND) delete
 
 install-istio:
 	sh scripts/install-istio.sh
