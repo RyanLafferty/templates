@@ -43,7 +43,7 @@ hooks:
 # Kubernetes
 .PHONY: start-minikube stop-minikube delete-minikube
 .PHONY: install-istio monitor-istio
-.PHONY: inspect-cluster start-dashboard cluster-url
+.PHONY: inspect-cluster start-dashboard
 
 start-minikube:
 	sh scripts/start-minikube.sh
@@ -61,8 +61,6 @@ inspect-cluster:
 	$(KUBECTL_COMMAND) get all
 start-dashboard:
 	$(MINICUBE_COMMAND) dashboard
-cluster-url:
-	$(MINICUBE_COMMAND) service $(KUBERNETES_SERVICE) --url
 
 # Knative
 .PHONY: install-knative monitor-knative
