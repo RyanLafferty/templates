@@ -67,4 +67,10 @@ make stop-minikube
 
 # Deletes the local kubernetes environment
 make delete-minikube
+
+# Install istio service mesh
+make install-istio
+
+# Get istio service mesh status
+make monitor-istio
 ```
