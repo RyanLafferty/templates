@@ -55,7 +55,7 @@ delete-minikube:
 install-istio:
 	sh scripts/install-istio.sh
 monitor-istio:
-	kubectl get pods --namespace istio-system
+	$(KUBECTL_COMMAND) get pods --namespace istio-system
 
 inspect-cluster:
 	$(KUBECTL_COMMAND) get all
@@ -71,19 +71,19 @@ start-dashboard:
 install-knative:
 	sh scripts/install-knative.sh
 monitor-knative:
-	kubectl get configuration,revision,route
+	$(KUBECTL_COMMAND) get configuration,revision,route
 monitor-knative-serving:
-	kubectl get pods --namespace knative-serving --watch
+	$(KUBECTL_COMMAND) get pods --namespace knative-serving --watch
 monitor-knative-build:
-	kubectl get pods --namespace knative-build --watch
+	$(KUBECTL_COMMAND) get pods --namespace knative-build --watch
 monitor-knative-eventing:
-	kubectl get pods --namespace knative-eventing --watch
+	$(KUBECTL_COMMAND) get pods --namespace knative-eventing --watch
 monitor-knative-pods:
-	kubectl get pods -watch
+	$(KUBECTL_COMMAND) get pods -watch
 monitor-knative-services:
-	kubectl get ksvc --watch
+	$(KUBECTL_COMMAND) get ksvc --watch
 monitor-local-gateways:
-	kubectl get gateway --all-namespaces --watch
+	$(KUBECTL_COMMAND) get gateway --all-namespaces --watch
 inspect-local-gateway:
 	sh scripts/inspect-local-gateway.sh
 get-local-gateways:
