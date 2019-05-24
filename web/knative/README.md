@@ -88,4 +88,10 @@ make monitor-knative-build
 
 # Monitor knative eventing pods
 make monitor-knative-eventing
+
+# Monitor the minikube cluster
+make inspect-cluster
+
+# Start the minikube dashboard
+make start-dashboard
 ```
