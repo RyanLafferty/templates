@@ -94,4 +94,13 @@ make inspect-cluster
 
 # Start the minikube dashboard
 make start-dashboard
+
+# Watches all gateway services
+make monitor-local-gateways
+
+# Updates environment with local local gateways
+make get-local-gateways
+
+# Inspects the local gateway service
+make inspect-local-gateway
 ```
