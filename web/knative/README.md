@@ -73,4 +73,19 @@ make install-istio
 
 # Get istio service mesh status
 make monitor-istio
+
+# Install knative platform
+make install-knative
+
+# Monitor knative platform services
+make monitor-knative
+
+# Monitor knative serving pods
+make monitor-knative-serving
+
+# Monitor knative build pods
+make monitor-knative-build
+
+# Monitor knative eventing pods
+make monitor-knative-eventing
 ```
