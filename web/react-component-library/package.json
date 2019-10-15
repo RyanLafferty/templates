@@ -11,7 +11,8 @@
     "start": "webpack --watch",
     "build": "webpack",
     "storybook": "start-storybook -s ./public -p 9009",
-    "build-storybook": "build-storybook -c .storybook -s ./public -o docs"
+    "build-storybook": "build-storybook -c .storybook -s ./public -o docs",
+    "test": "NODE_PATH=node_modules:src:. jest"
   },
   "author": {
     "name": "USER OR ORG"
@@ -28,8 +29,11 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@storybook/react": "^5.0.6",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.10.2",
     "webpack": "^4.29.6",
     "webpack-bundle-analyzer": "^3.2.0",
     "webpack-cli": "^3.3.0"

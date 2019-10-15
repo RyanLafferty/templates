@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelloComponent when no props are provided HelloComponent renders 1`] = `
+<div>
+  Hello World!
+</div>
+`;
