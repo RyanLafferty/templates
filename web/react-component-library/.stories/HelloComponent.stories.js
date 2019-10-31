@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import HelloComponent from './../src/HelloComponent';
 
 
-storiesOf('HelloComponent', module)
+storiesOf('HelloWorld/HelloComponent', module)
 .add('HelloComponent', () => (
   <HelloComponent/>
 ));

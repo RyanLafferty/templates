@@ -1,7 +1,3 @@
 import { configure } from '@storybook/react';
 
-function loadStories() {
-  require('../stories/HelloComponent.js');
-}
-
-configure(loadStories, module);
+configure(require.context('../.stories', true, /\.stories\.js$/), module);
