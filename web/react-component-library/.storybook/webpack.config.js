@@ -11,7 +11,7 @@ module.exports = async ({ config, mode }) => {
     test:/\.(s*)css$/,
     include: path.resolve(__dirname, '../src'),
     exclude: /(node_modules|bower_components|build)/,
-    use:[
+    use: [
       'style-loader',
       {
         loader: 'css-loader',
