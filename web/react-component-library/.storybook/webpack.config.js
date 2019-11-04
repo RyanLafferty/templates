@@ -11,7 +11,16 @@ module.exports = async ({ config, mode }) => {
     test:/\.(s*)css$/,
     include: path.resolve(__dirname, '../src'),
     exclude: /(node_modules|bower_components|build)/,
-    use:['style-loader','css-loader', 'sass-loader']
+    use:[
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          modules: true
+        }
+      },
+      'sass-loader'
+    ]
   });
 
   // Return the altered config
