@@ -2,10 +2,10 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
     libraryTarget: 'commonjs2'
   },
   module: {
